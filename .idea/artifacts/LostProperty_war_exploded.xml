@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="LostProperty:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/LostProperty_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="LostProperty/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="LostProperty" />
+          <element id="library" level="project" name="jre1.8" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="tomcat-api" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/mysql-connector-java-8.0.27.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
