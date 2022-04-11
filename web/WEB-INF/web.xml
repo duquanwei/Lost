@@ -30,4 +30,12 @@
         <servlet-name>searchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ShowServlet</servlet-name>
+        <servlet-class>operationServlet.ShowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowServlet</servlet-name>
+        <url-pattern>/ShowServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

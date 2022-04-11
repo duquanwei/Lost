@@ -141,12 +141,13 @@
 
 <div id="among">
   <div class="among_1">
+
     <div >
       <img src="./picture/2.webp" width="100" height="100">
     </div>
+
     <div>
       <font>寻物</font>
-
     </div>
     <div>
       <a href="" style="text-decoration: none;">
@@ -172,8 +173,9 @@
 
 
   <div id="button1">
-    <button type="button" class="btn btn-success">查看更多信息</button>
+    <a href="ShowServlet?current=${currentPage-1}" class="btn btn-success">查看更多信息</a>
   </div>
+
 </div>
 
 <div id="bottom">
