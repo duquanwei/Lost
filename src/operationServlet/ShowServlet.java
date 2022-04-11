@@ -19,16 +19,26 @@ import java.util.List;
 public class ShowServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Connection conn= DbConnect.getDBconnection();
-        String sql="select * from goods limit ?,?";
-        int current=1;
-        current=Integer.parseInt(request.getParameter("current"));
         int size=6;
+        int current=1;
+        int total = 0;
+        Connection conn= DbConnect.getDBconnection();
+        String sql1="select count(*) from goods";
+
+        String sql="select * from goods limit ?,?";
+        current=Integer.parseInt(request.getParameter("current"));
         List<Goods> goods=new ArrayList<>();
         try {
+            PreparedStatement preparedStatement1= conn.prepareStatement(sql1);
+            ResultSet resultSet1=preparedStatement1.executeQuery();
+            if(resultSet1.next()){
+                total=(int)resultSet1.getInt(1)/size;
+            }
             PreparedStatement preparedStatement=conn.prepareStatement(sql);
             if(current<=0){
                 current=1;
+            }else if(current>total){
+                current=total;
             }
             preparedStatement.setInt(1,(current-1)*size);
             preparedStatement.setInt(2,size);
