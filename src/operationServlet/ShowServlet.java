@@ -21,7 +21,8 @@ public class ShowServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection conn= DbConnect.getDBconnection();
         String sql="select * from goods limit ?,?";
-        int current=Integer.parseInt(request.getParameter("current"));
+        int current=1;
+        current=Integer.parseInt(request.getParameter("current"));
         int size=6;
         List<Goods> goods=new ArrayList<>();
         try {
