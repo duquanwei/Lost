@@ -36,19 +36,16 @@
         <div id="top_nav">
           <ul>
             <li style="list-style-type:none;">
-              <a href="">
+              <a href="found.jsp">
                 <span>寻物信息</span>
               </a>
             </li>
-            <li  style="list-style-type:none;">
-              <a href="">
-                <span>招领信息</span>
-              </a></li>
+
           </ul>
         </div>
       </div>
       <div>
-        <a href="">
+        <a href="guanyuwomen.html">
           关于我们
         </a>
       </div>
@@ -94,12 +91,7 @@
     </div>
     <div class="log_3">
       <select class="form-control" name="type">
-        <!--            <option>大概区域</option>
-                    <option>宿舍</option>
-                    <option>教学楼</option>
-                    <option>图书馆</option>
-                    <option>体育场</option>
-                    <option>其它</option> -->
+
         <option value="寻物启事">寻物启事</option>
         <option value="失物招领">失物招领</option>
       </select>
@@ -112,18 +104,20 @@
 <!-- 最右侧 -->
 <div id="sidebar">
   <div id="sidebar1">
-    <a href="">
-      <i><img src="./picture/image-text-fill.png" width="30px" height="30px"></i><br>
-      <span>意见反馈</span>
+    <a href="changjianwenti.html">
+      <i><img src="./picture/fankui.png" width="35px"></i><br>
+      <span>常见问题</span>
     </a>
   </div>
   <div id="sidebar2">
-    <a href="">
-      <span>了解我们</span>
+    <a href="lianxiwomen.jsp">
+      <i><img src="./picture/women.png" width="35px"></i><br>
+      <span>联系我们</span>
     </a>
   </div>
   <div id="sidebar3">
-    <a href="">
+    <a href="gerenzhongxin.html">
+      <i><img src="./picture/wode.png" width="35px"></i><br>
       <span>个人中心</span>
     </a>
   </div>
@@ -134,12 +128,13 @@
   <h1 align="center" style="">信息列表</h1>
   <h3 align="center"> Here's the most information listed on the website.</h3>
 </div>
-<%
-  List<Goods> goods1= (List<Goods>) request.getAttribute("goodsList");
-  for(Goods i : goods1){
-%>
+
 
 <div id="among">
+  <%
+    List<Goods> goods1= (List<Goods>) request.getAttribute("goodsList");
+    for(Goods g1 : goods1){
+  %>
   <div class="among_1">
 
     <div >
@@ -147,34 +142,39 @@
     </div>
 
     <div>
-      <font>寻物</font>
+      <font><%=g1.getType()%></font>
     </div>
     <div>
       <a href="" style="text-decoration: none;">
-        <li style="list-style-type:none;"><%=i.getName()%></li>
+        <li style="list-style-type:none;"><%=g1.getAddress()%></li>
       </a>
 
     </div>
     <div>
-      联系人:2
+      联系人:<%=g1.getName()%>
 
     </div>
-    <div>
-      <i class="icon-wenjian-01-01"></i>
+    <div style="width: 200px">
+      <i>
+        <img src="./picture/shuju.png" width="20px">
+        <%=g1.getDescribe()%>
+      </i>
     </div>
-    <div><%=i.getDate()%></div>
+    <div><%=g1.getDate()%></div>
     <div>
       <a href="" style="text-decoration: none;">
-        <li style="list-style-type:none;">其它</li>
+        <li style="list-style-type:none;"><%=g1.getTell()%></li>
       </a>
     </div>
   </div>
-<%}%>
+  <%}%>
 
 
   <div id="button1">
-    <a href="ShowServlet?current=${currentPage-1}" class="btn btn-success">查看更多信息</a>
+    <a href="ShowServlet?current=${currentPage-1}" aria-label="Previous">Previous</a>
+    <a href="ShowServlet?current=${currentPage+1}" aria-label="Next">Next</a>
   </div>
+</div>
 
 </div>
 

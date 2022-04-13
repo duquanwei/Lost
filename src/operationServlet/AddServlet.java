@@ -24,15 +24,17 @@ public class AddServlet extends HttpServlet {
         String description=request.getParameter("describe");
         String address=request.getParameter("address");
         String type=request.getParameter("type");
+        String tell=request.getParameter("tell");
         try{
             Connection conn= DbConnect.getDBconnection();
-            String sql="insert into goods values(?,?,?,?,?)";
+            String sql="insert into goods values(?,?,?,?,?,?)";
             PreparedStatement preparedStatement= conn.prepareStatement(sql);
             preparedStatement.setString(1,name);
             preparedStatement.setString(2,date);
             preparedStatement.setString(3,address);
             preparedStatement.setString(4,description);
             preparedStatement.setString(5,type);
+            preparedStatement.setString(6,tell);
             int n=preparedStatement.executeUpdate();
             if(n==1) {
 
@@ -60,7 +62,9 @@ public class AddServlet extends HttpServlet {
                 if (preparedStatement != null) preparedStatement.close();
                 if (conn != null) conn.close();
                RequestDispatcher dis=request.getRequestDispatcher("index.jsp");
+                RequestDispatcher dis1=request.getRequestDispatcher("found.jsp");
                 dis.forward(request,response);
+                dis1.forward(request,response);
             }else {
 
                 if(preparedStatement!=null){preparedStatement.close();}

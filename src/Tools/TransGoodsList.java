@@ -16,6 +16,7 @@ public class TransGoodsList {
         goods1.setAddress(resultSet.getString("address"));
         goods1.setDescribe(resultSet.getString("description"));
         goods1.setType(resultSet.getString("type"));
+        goods1.setTell(resultSet.getString("tell"));
         return goods1;
     }
 }

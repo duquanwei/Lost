@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 
              //成功登录
              if(rs.next()){
-                 String sql1="select * from goods";
+                 String sql1="select * from goods limit 0,6";
                  PreparedStatement preparedStatement= conn.prepareStatement(sql1);
                  ResultSet resultSet=preparedStatement.executeQuery();
                  while(resultSet.next()){

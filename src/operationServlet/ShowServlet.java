@@ -19,24 +19,35 @@ import java.util.List;
 public class ShowServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int size=6;
-        int current=1;
-        int total = 0;
+        int size=6; //每页的个数
+        int current=1; //当前页数
+        int total = 0; //总页数
         Connection conn= DbConnect.getDBconnection();
+
+        //获取总个数的SQL语句
         String sql1="select count(*) from goods";
 
+        //分页的sql语句
         String sql="select * from goods limit ?,?";
-        current=Integer.parseInt(request.getParameter("current"));
+
         List<Goods> goods=new ArrayList<>();
+
+        //通过网址的方式获取当前页数
+        current=Integer.parseInt(request.getParameter("current"));
+
+
         try {
+            //得到总页数
             PreparedStatement preparedStatement1= conn.prepareStatement(sql1);
             ResultSet resultSet1=preparedStatement1.executeQuery();
             if(resultSet1.next()){
-                total=(int)resultSet1.getInt(1)/size;
+                total=(int)resultSet1.getInt(1)/size+1;
             }
+
+            //分页查询
             PreparedStatement preparedStatement=conn.prepareStatement(sql);
-            if(current<=0){
-                current=1;
+            if(current<=1){
+                current=2;
             }else if(current>total){
                 current=total;
             }
@@ -49,6 +60,8 @@ public class ShowServlet extends HttpServlet {
         } catch (Exception throwables) {
             current=1;
         }
+
+        //将重新初始化的当前页数和最新的goodsList传递给index.jsp
         request.setAttribute("currentPage",current);
         request.setAttribute("goodsList",goods);
         RequestDispatcher dis=request.getRequestDispatcher("index.jsp");

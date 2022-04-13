@@ -19,6 +19,7 @@
 
         <input name="address" type="text" placeholder="请输入丢失大概地点"/></br>
         <input name="goods" type="text" placeholder="请输入丢失物品"/></br>
+        <input name="tell" type="text" placeholder="请输入联系方式"/></br>
         <textarea name="describe" placeholder="请描述物品具体特征"></textarea><br>
         <input name="time" type="datetime-local"/></br>
         <input name="Image" type="image" placeholder="请添加图片" /></br>

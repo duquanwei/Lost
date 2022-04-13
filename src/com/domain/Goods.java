@@ -6,7 +6,12 @@ public class Goods {
     private String address;
     private String describe;
     private String type;
+    private String tell;
     public Goods(){}
+
+    public void setTell(String tell) {
+        this.tell = tell;
+    }
 
     public void setDate(String date) {
         this.date = date;
@@ -46,5 +51,9 @@ public class Goods {
 
     public String getType() {
         return type;
+    }
+
+    public String getTell() {
+        return tell;
     }
 }
